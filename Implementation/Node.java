@@ -1,6 +1,3 @@
-import java.awt.*;
-import static java.awt.Color.BLACK;
-import static java.awt.Color.RED;
 
 public class Node<E extends Comparable<E>> {
      E data;
