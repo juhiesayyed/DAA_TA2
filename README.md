@@ -74,36 +74,33 @@ In Left-Left Rotation flip the color of the parent and grandparent. Make the par
 
 
 ## Deletion Operation in Red Black Tree
-Deletion is fairly complex process.  To understand deletion, notion of double black is used.  When a black node is deleted and replaced by a black child, the child is marked as double black. The main task now becomes to convert this double black to single black.
+Deletion is fairly complex process.  To understand deletion, notion of double black is used.  When a black node is deleted and replaced by a black child, the child is marked as double black(DB). The main task now becomes to convert this double black to single black.
 
 
 ## Steps to Delete an Element in Red Black Tree
-<ol>
-<li>1) Perform standard BST delete. When we perform standard delete operation in BST, we always end up deleting a node which is either leaf or has only one child (For an internal node, we copy the successor and then recursively call delete for successor, successor is always a leaf node or a node with one child). So we only need to handle cases where a node is leaf or has one child. Let v be the node to be deleted and u be the child that replaces v (Note that u is NULL when v is a leaf and color of NULL is considered as Black).</li>
 
-<li>Simple Case: <b>If either u or v is red,</b> we mark the replaced child as black (No change in black height). Note that both u and v cannot be red as v is parent of u and two consecutive reds are not allowed in red-black tree.</li>
+<img src="https://user-images.githubusercontent.com/86836506/203916703-ebe1313f-fbc4-4756-a6a5-58d84737dc53.png" width=50% height=50%>
 
-<li><b>If Both u and v are Black.</b>
-<ol><li>Color u as double black.  Now our task reduces to convert this double black to single black. Note that If v is leaf, then u is NULL and color of NULL is considered as black. So the deletion of a black leaf also causes a double black.</li>
-<li>Do following while the current node u is double black and it is not root. Let sibling of node be s.
-    <ol>
-    
-    <li>If sibling s is black and at least one of sibling’s children is red, perform rotation(s). Let the red child of s be r. This case can be divided in four subcases depending upon positions of s and r.
-    <ol><li>Left Left Case (s is left child of its parent and r is left child of s or both children of s are red). This is mirror of right right case shown in below diagram.</li>
-  <li>Left Right Case (s is left child of its parent and r is right child). This is mirror of right left case shown in below diagram.</li>
-  <li>Right Right Case (s is right child of its parent and r is right child of s or both children of s are red)</li> </ol></li>
-  
-  <li>If sibling is black and its both children are black, perform recoloring, and recur for the parent if parent is black.</li>
-    <li>If sibling is red, perform a rotation to move old sibling up, recolor the old sibling and parent. 
-    The new sibling is always black (See the below diagram). 
-    This mainly converts the tree to black sibling case (by rotation) and  leads to case (a) or (b). This case can be divided in two subcases.</li></ol> </li>
-    
-    <li>If u is root, make it single black and return (Black height of complete tree reduces by 1).</li>
+Test Cases of TreeSet implementation:
+Test Case 1:
+- using Integer object
+<img src="https://user-images.githubusercontent.com/86836506/203917750-c75efa03-eb15-4cc1-83f8-d0a2f021e7a6.png" width=50% height=5%>
+<img src="https://user-images.githubusercontent.com/86836506/203917860-a8e9278f-0768-464b-9a72-b45ffd37131c.png" width=50% height=5%>
+<img src="https://user-images.githubusercontent.com/86836506/203917880-5e046292-d51c-48d3-9ea1-358451fa2c3d.png" width=50% height=5%>
+
+<img src="https://user-images.githubusercontent.com/86836506/203917901-67bacabe-8d4a-46b0-8bd5-c2ec1d0083ae.png" width=50% height=5%>
+<img src="https://user-images.githubusercontent.com/86836506/203917932-fcd7ab5b-8b16-4982-b991-ef4803dd2c40.png" width=50% height=5%>
+
+<img src="https://user-images.githubusercontent.com/86836506/203917952-7554d26f-a9bf-4f18-b8f8-4cc76f0861b3.png" width=50% height=5%>
+<img src="https://user-images.githubusercontent.com/86836506/203917971-bb73ed3f-6229-4d90-8aa6-56ea7d9e11d2.png" width=50% height=5%>
+<img src="https://user-images.githubusercontent.com/86836506/203917991-4ef5ec0a-1524-4765-b624-61cbedb40f37.png" width=50% height=5%>
+<img src="https://user-images.githubusercontent.com/86836506/203918013-f251e85b-db17-4282-8ac0-ebd415d8fa54.png" width=50% height=5%>
+
+## Explanation for above insertion process:
+<img src="https://user-images.githubusercontent.com/86836506/203931395-2947dc42-40ce-475a-bd70-59188d4c432b.png" height=20% width=20%>
+<img src="https://user-images.githubusercontent.com/86836506/203931451-59854fcd-4bb3-416f-9081-d15d24a75ec2.png" height=30% width=30%>
 
 
-</ol>
-</li>
-</ol>
 
 
 
